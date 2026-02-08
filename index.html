@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alji Mathew</title>
+    <meta name="description"
+        content="Portfolio of Alji Mathew, an entry-level Web Developer and Student at Fr. Porukara CMI College.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <header class="header">
+        <a href="#" class="logo">AM<span class="dot">.</span></a>
+
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+            <div class="bx bx-moon" id="darkMode-icon"></div>
+        </nav>
+
+        <div class="menu-btn" id="menu-btn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="home" id="home">
+            <div class="home-content">
+                <h3 class="greeting">Hello, It's Me</h3>
+                <h1 class="name">Alji Mathew</h1>
+                <h3 class="role">And I'm a <span class="typing-text"></span></h3>
+                <p class="bio">BCA graduate and aspiring web developer with a strong interest in building clean,
+                    user-friendly websites. Passionate about learning new technologies
+                    and continuously improving technical and problem-solving skills.</p>
+
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+
+                <a href="Alji_Mathew_Resume.pdf" download class="btn">Download Resume</a>
+            </div>
+
+            <div class="home-img">
+                <div class="img-box">
+                    <!-- User Profile Image -->
+                    <img src="profile.jpg" alt="Alji Mathew">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="about-content">
+                <h2 class="heading">About <span>Me</span></h2>
+                <h3>Web Developer</h3>
+                <p>I am a BCA graduate and an aspiring web developer with a strong interest in creating clean,
+                    responsive, and user-friendly websites. I enjoy learning new technologies and continuously improving
+                    my technical skills to build better digital experiences.
+
+                    Beyond coding, I have a variety of interests that help me stay creative and balanced. I enjoy
+                    reading, gaming, and watching movies. These hobbies keep me motivated, improve my
+                    focus, and inspire fresh ideas in my work.
+
+                    As a fresher, I am eager to gain real-world experience, work on meaningful projects, and grow as a
+                    professional in the tech industry.</p>
+                <a href="know-about-me.html" class="btn">Read More</a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills" id="skills">
+            <h2 class="heading">My <span>Skills</span></h2>
+
+            <div class="skills-container">
+                <div class="skills-box">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Building responsive and dynamic websites using HTML, CSS, and JavaScript.</p>
+                    <p>I craft modern, responsive websites that blend design and functionality.
+                        My focus is clean code, smooth performance, and great user experience.</p>
+                </div>
+                <div class="skills-box">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <h3>Gaming</h3>
+                    <p>Gamer with a keen interest in interactive experiences.</p>
+                    <p>I enjoy playing competitive and strategic video games like Valorant, Free Fire, and BGMI, which
+                        help sharpen my focus, teamwork, and quick decision-making skills.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <h2 class="heading">My <span>Services</span></h2>
+
+            <div class="services-container">
+                <div class="services-box">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h3>Frontend Development</h3>
+                    <p>Creating beautiful, responsive user interfaces.</p>
+                    <a href="my-project.html" class="btn-sm">Read More</a>
+                </div>
+
+                <div class="services-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h3>Research</h3>
+                    <p>Exploring new technologies and trends.</p>
+                    <a href="tech-trends.html" class="btn-sm">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2 class="heading">Contact <span>Me</span></h2>
+
+            <form id="contactForm">
+                <div class="input-box">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                </div>
+                <div class="input-box">
+                    <input type="number" name="phone" placeholder="Mobile Number">
+                    <!-- Subject field removed as per request -->
+                </div>
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                <input type="submit" value="Send Message" class="btn">
+                <p id="formStatus"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2026 by Alji Mathew | All Rights Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- Typed JS -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <!-- Main JS -->
+    <script src="main.js"></script>
+</body>
+
+</html>
