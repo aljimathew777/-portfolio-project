@@ -1,29 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    --bg-color: #1f242d;
-    --second-bg-color: #323946;
-    --text-color: #fff;
-    --main-color: #FFD700;
-    /* Yellow */
-    --accent-color: #FF0000;
-    /* Red */
+    /* Dark Mode Theme - Main Default */
+    /* Background Visual Flow: Black -> Purple -> Blue */
+    --body-bg: linear-gradient(135deg, #050505 0%, #2d004d 50%, #001e4d 100%);
 
-    /* Navbar Colors */
-    --nav-bg-color: #E5E4E2;
-    /* Silver (Dark Mode) */
-    --nav-text-color: #1f242d;
+    /* Solid fallback for borders/etc */
+    --bg-color: #050505;
+
+    /* Glassy Card Background */
+    --second-bg-color: rgba(255, 255, 255, 0.05);
+
+    /* Text: Soft white */
+    --text-color: #f0f0f0;
+
+    /* Main blended colors: Electric Blue */
+    --main-color: #00d4ff;
+
+    /* Secondary Accent: Rich Purple */
+    --accent-color: #7F00FF;
+
+    /* Muted Gray - Secondary Text/Borders */
+    --light-color: #9CA3AF;
+
+    /* Navbar Colors - Glassy */
+    --nav-bg-color: rgba(20, 20, 30, 0.5);
+    --nav-text-color: #f0f0f0;
 }
 
 .light-mode {
-    --bg-color: #fdfdfd;
-    --second-bg-color: #eee;
-    --text-color: #333;
+    /* Light Mode Theme */
+    /* Background Visual Flow: Soft Lavender -> Sky Blue */
+    --body-bg: linear-gradient(135deg, #E6E6FA 0%, #F3E5F5 50%, #E3F2FD 100%);
+
+    /* Solid fallback */
+    --bg-color: #ffffff;
+
+    /* Glassy Card Background */
+    --second-bg-color: rgba(255, 255, 255, 0.3);
+
+    /* Text: Dark charcoal / near black */
+    --text-color: #1a1a1a;
+
+    /* Main Accent: Royal Purple */
+    --main-color: #7851A9;
+
+    /* Secondary Accent: Sky Blue */
+    --accent-color: #87CEEB;
 
     /* Navbar Colors */
-    --nav-bg-color: #333333;
-    /* Dark Gray (Light Mode) */
-    --nav-text-color: #fff;
+    --nav-bg-color: rgba(255, 255, 255, 0.6);
+    --nav-text-color: #1a1a1a;
 }
 
 #darkMode-icon {
@@ -57,7 +84,8 @@ html {
 }
 
 body {
-    background: var(--bg-color);
+    background: var(--body-bg);
+    background-attachment: fixed;
     color: var(--text-color);
     cursor: none;
     /* For custom cursor */
@@ -242,9 +270,9 @@ span {
     border-radius: 4rem;
     box-shadow: 0 0 1rem var(--main-color);
     font-size: 1.6rem;
-    color: var(--second-bg-color);
+    color: #fff;
     letter-spacing: .1rem;
-    font-weight: 600;
+    font-weight: 700;
     transition: .5s ease;
     opacity: 0;
     animation: slideTop 1s ease forwards;
@@ -265,6 +293,7 @@ span {
     align-items: center;
     gap: 2rem;
     background: var(--second-bg-color);
+    backdrop-filter: blur(10px);
 }
 
 .about-img img {
@@ -317,6 +346,7 @@ span {
 /* Skills Section */
 .skills {
     background: var(--second-bg-color);
+    backdrop-filter: blur(10px);
 }
 
 .skills h2 {
@@ -333,11 +363,12 @@ span {
 
 .skills-box {
     flex: 1 1 30rem;
-    background: var(--bg-color);
+    background: var(--second-bg-color);
+    backdrop-filter: blur(10px);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
     text-align: center;
-    border: .2rem solid var(--bg-color);
+    border: .2rem solid rgba(255, 255, 255, 0.1);
     transition: .5s ease;
 }
 
@@ -377,10 +408,11 @@ span {
 .services-box {
     flex: 1 1 30rem;
     background: var(--second-bg-color);
+    backdrop-filter: blur(10px);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
     text-align: center;
-    border: .2rem solid var(--bg-color);
+    border: .2rem solid rgba(255, 255, 255, 0.1);
     transition: .5s ease;
 }
 
@@ -410,8 +442,8 @@ span {
     background: var(--main-color);
     border-radius: 4rem;
     font-size: 1.6rem;
-    color: var(--second-bg-color);
-    font-weight: 600;
+    color: #fff;
+    font-weight: 700;
     box-shadow: 0 0 1rem var(--main-color);
     transition: .5s;
 }
@@ -433,6 +465,50 @@ span {
     margin-bottom: 3rem;
 }
 
+.contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    /* Wrap on small screens */
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    /* Icon above text */
+    align-items: center;
+    justify-content: center;
+    background: var(--second-bg-color);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    min-width: 20rem;
+    transition: .5s ease;
+    border: .2rem solid transparent;
+    /* Prepare for hover border */
+}
+
+.contact-card:hover {
+    border-color: var(--main-color);
+    transform: translateY(-5px);
+}
+
+.contact-card i {
+    font-size: 4rem;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.contact-card span {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
 .contact form .input-box {
     display: flex;
     justify-content: space-between;
@@ -446,6 +522,7 @@ span {
     font-size: 1.6rem;
     color: var(--text-color);
     background: var(--second-bg-color);
+    backdrop-filter: blur(10px);
     border-radius: .8rem;
     margin: .7rem 0;
 }
@@ -483,6 +560,7 @@ span {
     flex-wrap: wrap;
     padding: 2rem 9%;
     background: var(--second-bg-color);
+    backdrop-filter: blur(10px);
 }
 
 .footer-text p {

@@ -100,7 +100,7 @@ window.addEventListener("mousemove", function (e) {
     }, { duration: 500, fill: "forwards" });
 });
 
-/* Contact Form WhatsApp Submission */
+/* Contact Form AJAX Submission */
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
@@ -108,37 +108,53 @@ if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // Get form values
-        const name = contactForm.querySelector('input[name="name"]').value;
-        const email = contactForm.querySelector('input[name="email"]').value;
-        const phone = contactForm.querySelector('input[name="phone"]').value;
-        const message = contactForm.querySelector('textarea[name="message"]').value;
+        // Disable button and show sending state
+        const submitBtn = contactForm.querySelector('input[type="submit"]');
+        const originalBtnText = submitBtn.value;
+        submitBtn.value = "Sending...";
+        submitBtn.disabled = true;
+        formStatus.style.display = 'none';
 
-        // Construct WhatsApp message
-        let whatsappMessage = `*New Contact Message*\n\n`;
-        whatsappMessage += `*Name:* ${name}\n`;
-        whatsappMessage += `*Email:* ${email}\n`;
-        whatsappMessage += `*Phone:* ${phone}\n`;
-        whatsappMessage += `*Message:* ${message}`;
+        const formData = new FormData(contactForm);
+        const object = {};
+        formData.forEach((value, key) => object[key] = value);
+        const json = JSON.stringify(object);
 
-        // Encoder URI component
-        const encodedMessage = encodeURIComponent(whatsappMessage);
-
-        // WhatsApp URL (using the provided number)
-        const whatsappUrl = `https://wa.me/918137043528?text=${encodedMessage}`;
-
-        // Show status
-        formStatus.style.display = 'block';
-        formStatus.style.color = '#0ef';
-        formStatus.textContent = "Redirecting to WhatsApp...";
-
-        // Open WhatsApp in new tab
-        window.open(whatsappUrl, '_blank');
-
-        // Optional: Reset form after a delay
-        setTimeout(() => {
-            contactForm.reset();
-            formStatus.style.display = 'none';
-        }, 1000); // Wait 1 second before clean up
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+            .then(async (response) => {
+                const jsonResponse = await response.json();
+                if (response.status === 200) {
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = 'var(--main-color)'; // Highlight color
+                    formStatus.textContent = "Message sent successfully!";
+                    contactForm.reset();
+                } else {
+                    console.log(response);
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = 'red';
+                    formStatus.textContent = jsonResponse.message || "Something went wrong!";
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                formStatus.style.display = 'block';
+                formStatus.style.color = 'red';
+                formStatus.textContent = "Something went wrong! Please try again later.";
+            })
+            .finally(() => {
+                submitBtn.value = originalBtnText;
+                submitBtn.disabled = false;
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            });
     });
 }
