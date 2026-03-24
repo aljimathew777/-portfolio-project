@@ -464,7 +464,7 @@ span {
     z-index: 1;
     filter: contrast(1.05) brightness(1.0) saturate(1.1);
     animation: floatImage 5s ease-in-out infinite;
-    background-color: rgba(20, 0, 0, 0.4);
+    background-color: transparent;
 }
 
 /* Bottom ambient floor glow */
